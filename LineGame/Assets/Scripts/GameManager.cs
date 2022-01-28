@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using static System.Math;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +33,9 @@ public class GameManager : MonoBehaviour
 		k1 = 0;
 		k2 = 0;
 		flag = true;
+
+        numOfRows = GameObject.Find("DataPersistence").GetComponent<DataPersistence>().ChosenNumOfRowsData;
+        numOfColumns = GameObject.Find("DataPersistence").GetComponent<DataPersistence>().ChosenNumOfColsData;
 
         InitializeFields(numOfRows,numOfColumns);
         tilesContainer = GameObject.Find("TilesContainer");
@@ -145,7 +152,7 @@ public class GameManager : MonoBehaviour
 		CheckForScoreDiagonally();
 		ResetConsecuteBallsSearchingVariables();
 		CheckForScoreDiagonallyTraverse(Ball.fields, 0, 0, Ball.fields.GetLength(0), Ball.fields.GetLength(1));
-		//GetComponent<Menus> ().UpdateScore();
+		GetComponent<GameUI> ().UpdateScore();
     }
 
     private void ConvertPlaceholderBallsToRealBalls()
@@ -190,7 +197,6 @@ public class GameManager : MonoBehaviour
             ball.transform.localPosition = new Vector2(0, 0);
 			ball.GetComponent<SpriteRenderer> ().sortingOrder = 0;
 			numberOfBallsToCreate--;
-			//GetComponent<Menus> ().UpdateNextWaveBallsColor(numberOfBallsToCreate, ballColor);
 		}
     }
 
@@ -208,7 +214,7 @@ public class GameManager : MonoBehaviour
             }
 		}
         if(numberOfEmptyFields == 0) {//When there is no available field game over menu will pop up
-			//GetComponent<Menus> ().GameOverMenu();
+			GetComponent<GameUI> ().GameOverMenu();
 			return 0;
 		}
 		return numberOfEmptyFields;
@@ -597,4 +603,20 @@ public class GameManager : MonoBehaviour
         }
         return null;
     } 
+
+    public void RestartGame()
+    {
+        Ball.ResetAllVariables();
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+
+    }
+
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+        #else
+            Application.Quit();
+        #endif
+    }
 }

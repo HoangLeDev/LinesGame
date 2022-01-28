@@ -15,4 +15,14 @@ public class Ball : MonoBehaviour
     public static int startPosY = -1;
 
     public static int score =0;
+
+    public static bool isGameOver=false;
+
+    public static void ResetAllVariables() {
+        startPosX = -1;
+        startPosY = -1;
+        isMoving = false;
+        score = 0;
+        isGameOver=false;
+    }
 }
