@@ -10,4 +10,9 @@ public class Ball : MonoBehaviour
     public static bool isMoving = false;
     public static GameObject ballObject;
 
+    //Init for start position of ball
+    public static int startPosX = -1;
+    public static int startPosY = -1;
+
+    public static int score =0;
 }

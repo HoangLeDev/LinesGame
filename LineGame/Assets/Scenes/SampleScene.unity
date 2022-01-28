@@ -246,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1207805481}
   - component: {fileID: 1207805480}
+  - component: {fileID: 1207805482}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -270,14 +271,6 @@ MonoBehaviour:
   numOfRows: 7
   numOfColumns: 7
   numOfColors: 7
-  _ballPrefabs:
-  - {fileID: 1049900218682024493, guid: e0dc43d515b5cf54dad66ce6166d91a6, type: 3}
-  - {fileID: 3072188815683092632, guid: 670cfc6aa1842424da785f8062a4960a, type: 3}
-  - {fileID: 727897161445989381, guid: 3b2d53120f458d74e8b07b03b67f14c2, type: 3}
-  - {fileID: 258641722336431363, guid: a497dcd5bd7d263458de0b31880016d7, type: 3}
-  - {fileID: 7008271959239552477, guid: 7327c06b19ad342409ad6440ac4c05f7, type: 3}
-  - {fileID: 1264529453956964467, guid: d8fef807bc1e190499cf6f7c9efeddc0, type: 3}
-  - {fileID: 7380107143543354448, guid: 82b8136a6cb6ab74d8043a0e33cff384, type: 3}
 --- !u!4 &1207805481
 Transform:
   m_ObjectHideFlags: 0
@@ -292,3 +285,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1207805482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207805479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce41595c0877a344f895d46723b3b431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
