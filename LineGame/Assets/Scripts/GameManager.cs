@@ -390,17 +390,14 @@ public class GameManager : MonoBehaviour
             Ball.ballObject.GetComponent<SelectedBallAnimation>().enabled = false;
             Ball.ballObject.transform.localScale = new Vector2(0.25f, 0.25f);
             StartCoroutine(BallMovement(path, xDestinationPos, yDestinationPos, ballColorType));
-
-                //////////////////// [Reminder]PLAY MOVING SOUND //////////////////////////
-
+            GameObject.Find("MovingSound").GetComponent<AudioSource>().Play();
         }
         else //if the path is not available
         {
             Ball.fields[Ball.startPosX, Ball.startPosY] = ballColorType +1;
             Ball.ballObject.transform.parent = GameObject.Find("Tile " + Ball.startPosX + "X" + Ball.startPosY).transform;
             Ball.ballObject.GetComponent<SelectedBallAnimation>().enabled = false;
-
-                //////////////////// [Reminder]PLAY CANCELLING MOVING SOUND //////////////////
+            GameObject.Find("CancelMovingSound").GetComponent<AudioSource>().Play();
 
             Ball.ballObject.transform.localScale = new Vector2(0.25f, 0.25f);
             Ball.ballObject = null; //make that is none chosen ball

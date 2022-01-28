@@ -10,5 +10,6 @@ public class BallExplosion : MonoBehaviour
         explosionParticle.transform.parent = GameObject.Find("TilesContainer").transform;
         explosionParticle.SetActive(true);
         explosionParticle.GetComponent<DestroyExplosionParticle> ().enabled = true;
+        GameObject.Find("GetScoreSound").GetComponent<AudioSource>().Play();
     }
 }
