@@ -619,4 +619,11 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         #endif
     }
+
+    public void ResetScore()//Reset best score
+    {
+        DataPersistence.instance.bestScore = 0;
+        DataPersistence.instance.SaveData();
+        FindObjectOfType<GameUI>().bestScoreDisplay.text = "Best Score: 0"; 
+    }
 }

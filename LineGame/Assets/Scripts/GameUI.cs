@@ -9,6 +9,15 @@ public class GameUI : MonoBehaviour
     private Text score;
     [SerializeField]
     private GameObject gameOverMenuUI;
+    private int bestScore;
+    private int currentMaxScore;
+    public Text bestScoreDisplay;
+
+    private void Awake()
+    {
+        DataPersistence.instance.LoadData();
+        bestScoreDisplay.text = ("Best Score: " + DataPersistence.instance.bestScore);
+    }
 
     public void UpdateScore()
     {
@@ -19,5 +28,15 @@ public class GameUI : MonoBehaviour
     {
         gameOverMenuUI.SetActive(true);
         Ball.isGameOver=true;
+        if(DataPersistence.instance != null)
+        {
+            currentMaxScore= Ball.score;
+            if(currentMaxScore>DataPersistence.instance.bestScore)
+            {
+                DataPersistence.instance.bestScore=currentMaxScore;
+                DataPersistence.instance.SaveData();
+                bestScoreDisplay.text = ("Best Score: " + DataPersistence.instance.bestScore);
+            }
+        }
     }
 }
